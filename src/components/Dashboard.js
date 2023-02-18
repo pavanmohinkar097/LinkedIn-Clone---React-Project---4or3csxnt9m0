@@ -1,20 +1,34 @@
 import React, { useEffect, useState } from "react";
-import userMap from "../mock_backend/UserList";
 import { useNavigate, useParams } from "react-router-dom";
 import "./../styles/Dashboard.css";
 import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Widget from "./Widget";
+import posts from "../mock_backend/Posts";
 
 const Dashboard = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.value);
   const [post, setPost] = useState("");
+  const [displayPosts, setDisplayPosts] = useState(posts);
 
   const handlePost = (e) => {
     e.preventDefault();
+    setDisplayPosts([
+      {
+        id: displayPosts.length + 1,
+        initial: user.name.slice(0, 1).toUpperCase(),
+        name: user.name,
+        description: "User",
+        post: post,
+        likes: new Set(),
+        comments: [],
+      },
+      ...displayPosts,
+    ]);
+
     setPost("");
   };
 
@@ -179,7 +193,81 @@ const Dashboard = () => {
               </div>
             </div>
           </div> */}
-          <div className="post libd">
+          {displayPosts.map((e) => (
+            <div className="post libd" key={e.id}>
+              <div className="post__header">
+                <div className="account__avatar">
+                  <div className="account__details">{e.initial}</div>
+                </div>
+                <div className="post__info">
+                  <h2 className="random__name">{e.name}</h2>
+                  <p>{e.description}</p>
+                </div>
+              </div>
+
+              <div className="post__body">
+                <div className="post__message">
+                  <p>{e.post}</p>
+                </div>
+                <div className="post__creative">
+                  {/* <img src="https://picsum.photos/560?random=3" alt="postImage" /> */}
+                </div>
+                <div className="post__summary"></div>
+              </div>
+
+              <div className="post__engagement--container">
+                <div className="post__engagement--metrics">
+                  <img
+                    className=""
+                    src="https://static-exp1.licdn.com/sc/h/8ekq8gho1ruaf8i7f86vd1ftt"
+                    alt="like"
+                  />
+                  <span className="linkedin__engagement">{e.likes.size}</span>
+                </div>
+                <div className="post__engagement--ampiflications">
+                  <span className="post__engagement--comment">
+                    <span className="linkedin__engagement">#</span>
+                    comments
+                  </span>
+                  <span className="post__engagement--shares">
+                    <span className="linkedin__engagement">#</span> shares
+                  </span>
+                </div>
+              </div>
+
+              <div className="feed__input--options">
+                <div className="input__option">
+                  <i style={{ color: "gray" }} className="material-icons">
+                    {" "}
+                    thumb_up{" "}
+                  </i>
+                  <h4>Like</h4>
+                </div>
+                <div className="input__option">
+                  <i style={{ color: "gray" }} className="material-icons">
+                    {" "}
+                    comment{" "}
+                  </i>
+                  <h4>Comment</h4>
+                </div>
+                <div className="input__option">
+                  <i style={{ color: "gray" }} className="material-icons">
+                    {" "}
+                    share{" "}
+                  </i>
+                  <h4>Share</h4>
+                </div>
+                <div className="input__option">
+                  <i style={{ color: "gray" }} className="material-icons">
+                    {" "}
+                    send{" "}
+                  </i>
+                  <h4>Send</h4>
+                </div>
+              </div>
+            </div>
+          ))}
+          {/* <div className="post libd">
             <div className="post__header">
               <div className="account__avatar">
                 <div className="account__details">A</div>
@@ -203,7 +291,7 @@ const Dashboard = () => {
                 </p>
               </div>
               <div className="post__creative">
-                <img src="https://picsum.photos/560?random=3" alt="postImage" />
+                 <img src="https://picsum.photos/560?random=3" alt="postImage" /> 
               </div>
               <div className="post__summary">
                 <p>Project Created By Abhideep Ghosh.</p>
@@ -260,7 +348,7 @@ const Dashboard = () => {
                 <h4>Send</h4>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <Widget />
       </div>
