@@ -33,26 +33,6 @@ const Dashboard = () => {
     setPost("");
   };
 
-  // const toggleLike = (e) => {
-  //   if (e.likes.has(user.name)) {
-  //     e.likes.delete(user.name);
-  //     posts[posts.indexOf(e)].likes.delete(user.name);
-  //   } else {
-  //     e.likes.add(user.name);
-  //     posts[posts.indexOf(e)].likes.add(user.name);
-  //   }
-  //   setDisplayPosts([...posts]);
-  // };
-
-  // const handleComment = (e) => {
-  //   posts[posts.indexOf(e)].comments.push({
-  //     name: user.name,
-  //     comment: comment,
-  //   });
-  //   setDisplayPosts([...posts]);
-  //   setComment("");
-  // };
-
   useEffect(() => {
     if (user.isLoggedIn === false) navigate("/");
     else console.log(user);

@@ -9,6 +9,8 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(false);
+  const [errorLogin, toggleErrorLogin] = useState(false);
+  const [errorRegister, toggleErrorRegister] = useState(false);
   const [name, setName] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -26,12 +28,31 @@ const Login = () => {
         );
         navigate(`/dashboard/${userMap.get(username).id}`);
       } else {
-        alert("Wrong Username Or Password");
+        toggleErrorLogin(true);
       }
+    } else {
+      toggleErrorLogin(true);
     }
   };
 
   const handleRegister = () => {
+    if (
+      username.length < 8 ||
+      !username.includes("@") ||
+      !username.includes(".")
+    ) {
+      toggleErrorRegister(true);
+      return;
+    }
+    if (password.length < 6) {
+      toggleErrorRegister(true);
+      return;
+    }
+    if (name.length < 3) {
+      toggleErrorRegister(true);
+      return;
+    }
+
     if (userMap.has(username)) {
       alert("User already Exists");
     } else {
@@ -89,9 +110,11 @@ const Login = () => {
                 />
                 <label htmlFor="password">Password</label>
               </div>
-              <a href="/" className="links">
-                Forget Password?
-              </a>
+              {errorLogin ? (
+                <a className="links">Invalid Username Or Password</a>
+              ) : (
+                ""
+              )}
               <button className="btn" onClick={handleLogin}>
                 Sign in
               </button>
@@ -165,6 +188,13 @@ const Login = () => {
                 />
                 <label htmlFor="password">Password</label>
               </div>
+              {errorRegister ? (
+                <a className="links">
+                  Please Enter A Valid Name, Email & Password
+                </a>
+              ) : (
+                ""
+              )}
               <button className="btn" onClick={handleRegister}>
                 Register
               </button>
