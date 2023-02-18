@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./../styles/Login.css";
 import userMap from "../mock_backend/UserList";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../features/Users";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -9,10 +11,19 @@ const Login = () => {
   const [register, setRegister] = useState(false);
   const [name, setName] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = () => {
     if (userMap.has(username)) {
       if (userMap.get(username).password === password) {
+        dispatch(
+          login({
+            id: userMap.get(username).id,
+            name: userMap.get(username).name,
+            username: username,
+            isLoggedIn: true,
+          })
+        );
         navigate(`/dashboard/${userMap.get(username).id}`);
       } else {
         alert("Wrong Username Or Password");

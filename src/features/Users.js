@@ -4,7 +4,6 @@ const initialValues = {
   id: "0",
   name: "",
   username: "",
-  password: "",
   isLoggedIn: false,
 };
 
