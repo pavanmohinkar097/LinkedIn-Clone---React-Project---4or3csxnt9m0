@@ -267,6 +267,24 @@
   font-size: 12px;
   grid-template-columns: 1fr;
 }
+.comment__input {
+  border: 1px solid lightgray;
+  border-radius: 30px;
+  padding: 10px;
+  color: gray;
+}
+.comment__input > input {
+  border: none;
+  margin-left: 10px;
+  outline-width: 0;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.comment__input > button {
+  display: none;
+}
 .post__engagement_input {
   width: 100%;
   border: 1px gray solid;

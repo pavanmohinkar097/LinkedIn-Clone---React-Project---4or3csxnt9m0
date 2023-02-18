@@ -12,8 +12,9 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user.value);
   const [post, setPost] = useState("");
+  const [comment, setComment] = useState("");
   const [displayPosts, setDisplayPosts] = useState(posts);
-  const [toggleComment, setToggleComment] = useState(false);
+  const [toggleComment, setToggleComment] = useState(true);
 
   const handlePost = (e) => {
     e.preventDefault();
@@ -39,6 +40,15 @@ const Dashboard = () => {
       posts[posts.indexOf(e)].likes.add(user.name);
     }
     setDisplayPosts([...posts]);
+  };
+
+  const handleComment = (e) => {
+    posts[posts.indexOf(e)].comments.push({
+      name: user.name,
+      comment: comment,
+    });
+    setDisplayPosts([...posts]);
+    setComment("");
   };
 
   useEffect(() => {
@@ -155,7 +165,24 @@ const Dashboard = () => {
               </div>
               <div className="post__engagement--comments">
                 {toggleComment ? (
-                  <input className="post__engagement_input" type="text" />
+                  <form
+                    className="comment__input"
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      handleComment(e);
+                    }}
+                  >
+                    <input
+                      className="post__engagement_input"
+                      type="text"
+                      value={comment}
+                      placeholder="Write A Comment"
+                      onChange={(e) => {
+                        setComment(e.target.value);
+                      }}
+                    />
+                    <button type="submit">Send</button>
+                  </form>
                 ) : (
                   ""
                 )}
