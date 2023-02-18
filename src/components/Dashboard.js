@@ -1,8 +1,11 @@
 import React from "react";
+import userMap from "../mock_backend/UserList";
+import { useParams } from "react-router-dom";
 import "./../styles/Dashboard.css";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  const { id } = useParams();
+  return <div>{id}</div>;
 };
 
 export default Dashboard;

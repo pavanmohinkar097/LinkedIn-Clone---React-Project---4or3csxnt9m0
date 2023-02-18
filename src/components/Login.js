@@ -13,7 +13,7 @@ const Login = () => {
   const handleLogin = () => {
     if (userMap.has(username)) {
       if (userMap.get(username).password === password) {
-        navigate(`/dashboard/${username}`);
+        navigate(`/dashboard/${userMap.get(username).id}`);
       } else {
         alert("Wrong Username Or Password");
       }
