@@ -16,18 +16,6 @@ const Dashboard = () => {
 
   const handlePost = (e) => {
     e.preventDefault();
-    setDisplayPosts([
-      {
-        id: displayPosts.length + 1,
-        initial: user.name.slice(0, 1).toUpperCase(),
-        name: user.name,
-        description: "User",
-        post: post,
-        likes: new Set(),
-        comments: [],
-      },
-      ...displayPosts,
-    ]);
     posts.unshift({
       id: displayPosts.length + 1,
       initial: user.name.slice(0, 1).toUpperCase(),
@@ -37,6 +25,8 @@ const Dashboard = () => {
       likes: new Set(),
       comments: [],
     });
+
+    setDisplayPosts([...posts]);
 
     setPost("");
   };
