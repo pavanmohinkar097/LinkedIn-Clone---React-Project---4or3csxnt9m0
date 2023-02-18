@@ -28,6 +28,15 @@ const Dashboard = () => {
       },
       ...displayPosts,
     ]);
+    posts.unshift({
+      id: displayPosts.length + 1,
+      initial: user.name.slice(0, 1).toUpperCase(),
+      name: user.name,
+      description: "User",
+      post: post,
+      likes: new Set(),
+      comments: [],
+    });
 
     setPost("");
   };
