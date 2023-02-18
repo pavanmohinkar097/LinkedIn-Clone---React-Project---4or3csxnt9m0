@@ -103,4 +103,5 @@
   color: #0073b1;
   text-decoration: none;
   font-size: var(--fs-body);
+  cursor: pointer;
 }
