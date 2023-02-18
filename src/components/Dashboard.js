@@ -13,6 +13,7 @@ const Dashboard = () => {
   const user = useSelector((state) => state.user.value);
   const [post, setPost] = useState("");
   const [displayPosts, setDisplayPosts] = useState(posts);
+  const [toggleComment, setToggleComment] = useState(false);
 
   const handlePost = (e) => {
     e.preventDefault();
@@ -134,13 +135,30 @@ const Dashboard = () => {
                 </div>
                 <div className="post__engagement--ampiflications">
                   <span className="post__engagement--comment">
-                    <span className="linkedin__engagement">#</span>
+                    <span className="linkedin__engagement">
+                      {e.comments.length}{" "}
+                    </span>
                     comments
                   </span>
                   <span className="post__engagement--shares">
                     <span className="linkedin__engagement">#</span> shares
                   </span>
                 </div>
+              </div>
+              <div className="post__engagement--comments">
+                {e.comments.map((commentUser) => (
+                  <div>
+                    <h4>{commentUser.name}</h4>
+                    <p>{commentUser.comment}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="post__engagement--comments">
+                {toggleComment ? (
+                  <input className="post__engagement_input" type="text" />
+                ) : (
+                  ""
+                )}
               </div>
 
               <div
@@ -156,7 +174,12 @@ const Dashboard = () => {
                   </i>
                   <h4>Like</h4>
                 </div>
-                <div className="input__option">
+                <div
+                  className="input__option"
+                  onClick={() => {
+                    setToggleComment(!toggleComment);
+                  }}
+                >
                   <i style={{ color: "gray" }} className="material-icons">
                     {" "}
                     comment{" "}

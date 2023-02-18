@@ -259,6 +259,20 @@
   align-items: center;
   font-size: 12px;
 }
+.post__engagement--comments {
+  display: grid;
+  margin: 5px 0px 0px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  grid-template-columns: 1fr;
+}
+.post__engagement_input {
+  width: 100%;
+  border: 1px gray solid;
+  border-radius: 4px;
+  height: 25px;
+}
 .post__engagement--metrics {
   display: flex;
   align-items: center;
