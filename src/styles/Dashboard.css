@@ -39,7 +39,7 @@
   width: 70px;
 }
 .account__avatar--img {
-  background-image: url("https://cumulus-fs.s3.amazonaws.com/Personas/rachel_morris_profile_square.png");
+  background-image: url("./../assets/profile.jpeg");
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 100%;
