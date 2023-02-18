@@ -1,7 +1,16 @@
 import React from "react";
 import "./../styles/Navbar.css";
+import { useDispatch } from "react-redux";
+import { logout } from "../features/Users";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const logOut = () => {
+    dispatch(logout());
+    navigate("/");
+  };
   return (
     <div className="header">
       <div className="header__nav">
@@ -58,11 +67,11 @@ const Navbar = () => {
             </i>
             <h3>Notifications</h3>
           </div>
-          <div className="header__option">
+          <div className="header__option" onClick={logOut}>
             <div className="account__avatar">
               <div className="account__avatar--img"></div>
             </div>
-            <h3>Me</h3>
+            <h3>Logout</h3>
           </div>
         </div>
       </div>
