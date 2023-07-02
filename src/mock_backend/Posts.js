@@ -8,7 +8,7 @@ const posts = [
 
     I am incredibly honored and humbled to announce that I have been promoted to the position of [New Job Title] at [Company Name]. It's a true testament to the support and opportunities provided by this amazing organization.
     
-    Over the years, I have been fortunate to work alongside some of the most talented individuals who have challenged and inspired me. I am immensely grateful to my colleagues at [Company Name] for their continuous support and mentorship. Together, we have achieved remarkable milestones and contributed to the success of numerous projects.
+    Over the years, I have been fortunate to work alongside some of  most talented individuals who have challenged and inspired me. I am immensely grateful to my colleagues at [Company Name] for their continuous support and mentorship. Together, we have achieved remarkable milestones and contributed to the success of numerous projects.
     
     I would also like to express my deepest gratitude to our clients and partners for their trust and collaboration. It has been an enriching experience to work with such visionary organizations and contribute to their growth.
     
