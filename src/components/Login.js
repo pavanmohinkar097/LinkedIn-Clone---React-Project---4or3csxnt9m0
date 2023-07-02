@@ -24,6 +24,7 @@ const Login = () => {
             name: userMap.get(username).name,
             username: username,
             isLoggedIn: true,
+            
           })
         );
         navigate(`/dashboard/${userMap.get(username).id}`);
@@ -32,6 +33,7 @@ const Login = () => {
       }
     } else {
       toggleErrorLogin(true);
+      alert("jnndn")
     }
   };
 
